@@ -7,12 +7,15 @@ function loadWidget(config) {
     const model = new Model(config);
     localStorage.removeItem("waifu-display");
     sessionStorage.removeItem("waifu-text");
-    document.body.insertAdjacentHTML("beforeend", `<div id="waifu">
+
+    const navContainer = document.getElementById('nav');
+    (navContainer || document.body).insertAdjacentHTML("beforeend", `<div id="waifu">
             <div id="waifu-tips"></div>
             <canvas id="live2d" width="800" height="800"></canvas>
             <div id="waifu-tool"></div>
         </div>`);
     // https://stackoverflow.com/questions/24148403/trigger-css-transition-on-appended-element
+    
     setTimeout(() => {
         document.getElementById("waifu").style.bottom = 0;
     }, 0);
